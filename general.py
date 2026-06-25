@@ -4,5 +4,6 @@ class General:
         self.is_traitor = is_traitor
 
     def __str__(self):
-        status = "Traitor" if self.is_traitor else "Loyal"
+        if (self.is_traitor): status = "Traitor" 
+        else: status = "Loyal"
         return f"General {self.general_id} ({status})"
