@@ -1,4 +1,4 @@
-from simulation import (
+from src.simulation import (
     collect_messages,
     check_consensus,
     exchange_messages,
@@ -6,6 +6,7 @@ from simulation import (
     create_generals,
     run_experiments,
 )
+from src.visualization import visualize_first_round
 
 
 def run_single_simulation():
@@ -13,6 +14,9 @@ def run_single_simulation():
     original_order = "ATTACK"
     strategy = "split"
     messages = collect_messages(generals, original_order, strategy)
+
+    visualize_first_round(generals, messages)
+    
     second_round_messages = exchange_messages(generals, messages, original_order, strategy)
     final_decisions = make_final_decisions(generals, messages, second_round_messages)
     consensus = check_consensus(final_decisions)
@@ -42,8 +46,8 @@ def run_single_simulation():
 def run_experiment_mode():
     results = run_experiments(
         number_of_runs=100,
-        number_of_generals=6,
-        number_of_traitors=3,
+        number_of_generals=7,
+        number_of_traitors=2,
     )
 
     print("Experiment results:")
