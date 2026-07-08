@@ -36,7 +36,7 @@ def visualize_first_round(generals, messages, filename="first_round.png"):
         else:
             node_colors.append("lightblue")
 
-    positions = nx.spring_layout(graph, seed=42)
+    positions = nx.spring_layout(graph, seed=42, k=2.5)
 
     plt.figure(figsize=(10, 7))
 
@@ -47,7 +47,8 @@ def visualize_first_round(generals, messages, filename="first_round.png"):
         node_color=node_colors,
         node_size=1600,
         font_size=10,
-        arrows=True
+        arrows=True,
+        connectionstyle="arc3,rad=0.2" # added for separating arrows
     )
 
     edge_labels = nx.get_edge_attributes(graph, "message")
@@ -56,7 +57,9 @@ def visualize_first_round(generals, messages, filename="first_round.png"):
         graph,
         positions,
         edge_labels=edge_labels,
-        font_size=8
+        font_size=6,
+        label_pos=0.3, # added for separating arrows
+        rotate=False
     )
 
     plt.title("First Round Messages")
