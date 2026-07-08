@@ -6,7 +6,7 @@ runs,generals,traitors,strategy,successful_consensus,failed_consensus,success_ra
 100,6,0,random,100,0,100.0
 100,6,1,random,100,0,100.0
 100,6,2,random,100,0,100.0
-100,6,3,random,83,17,83.0
+100,6,3,random,91,9,91.0
 100,6,0,always_lie,100,0,100.0
 100,6,1,always_lie,100,0,100.0
 100,6,2,always_lie,100,0,100.0
@@ -14,4 +14,4 @@ runs,generals,traitors,strategy,successful_consensus,failed_consensus,success_ra
 100,6,0,coordinated,100,0,100.0
 100,6,1,coordinated,100,0,100.0
 100,6,2,coordinated,100,0,100.0
-100,6,3,coordinated,48,52,48.0
+100,6,3,coordinated,67,33,67.0

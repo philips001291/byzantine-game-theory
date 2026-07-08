@@ -8,17 +8,74 @@ from src.simulation import (
 )
 from src.visualization import visualize_first_round
 
+def get_simulation_config():
+    number_of_generals = int(input("Enter number of generals: "))
+    number_of_traitors = int(input("Enter number of traitors: "))
+
+    if number_of_generals >= 3 * number_of_traitors + 1:
+        print("BFT condition satisfied")
+    else:
+        print("BFT condition NOT satisfied")
+
+    return number_of_generals, number_of_traitors
+
+
+def choose_strategy():
+    print("Choose traitor strategy:")
+    print("1. Split")
+    print("2. Random")
+    print("3. Always lie")
+    print("4. Coordinated")
+
+    strategy_choice = input("Choose strategy: ")
+
+    if strategy_choice == "1":
+        return "split"
+
+    if strategy_choice == "2":
+        return "random"
+
+    if strategy_choice == "3":
+        return "always_lie"
+
+    if strategy_choice == "4":
+        return "coordinated"
+
+    return "split"
 
 def run_single_simulation():
-    generals = create_generals(number_of_generals=6, number_of_traitors=2)
+
+    number_of_generals, number_of_traitors = get_simulation_config()
+    strategy = choose_strategy()
+
+    generals = create_generals(
+        number_of_generals=number_of_generals,
+        number_of_traitors=number_of_traitors
+    )
+
     original_order = "ATTACK"
-    strategy = "split"
-    messages = collect_messages(generals, original_order, strategy)
+
+    messages = collect_messages(
+        generals,
+        original_order,
+        strategy
+    )
 
     visualize_first_round(generals, messages)
-    
-    second_round_messages = exchange_messages(generals, messages, original_order, strategy)
-    final_decisions = make_final_decisions(generals, messages, second_round_messages)
+
+    second_round_messages = exchange_messages(
+        generals,
+        messages,
+        original_order,
+        strategy
+    )
+
+    final_decisions = make_final_decisions(
+        generals,
+        messages,
+        second_round_messages
+    )
+
     consensus = check_consensus(final_decisions)
 
     print("Generals:")
@@ -44,13 +101,23 @@ def run_single_simulation():
 
 
 def run_experiment_mode():
+    number_of_runs = int(input("Enter number of runs: "))
+    number_of_generals, number_of_traitors = get_simulation_config()
+    strategy = choose_strategy()
+
+    if number_of_generals >= 3 * number_of_traitors + 1:
+        print("BFT condition satisfied")
+    else:
+        print("BFT condition NOT satisfied")
+
     results = run_experiments(
-        number_of_runs=100,
-        number_of_generals=7,
-        number_of_traitors=2,
+        number_of_runs=number_of_runs,
+        number_of_generals=number_of_generals,
+        number_of_traitors=number_of_traitors,
+        strategy = strategy
     )
 
-    print("Experiment results:")
+    print("\nExperiment results:")
     print(f"Runs: {results['runs']}")
     print(f"Generals: {results['generals']}")
     print(f"Traitors: {results['traitors']}")
