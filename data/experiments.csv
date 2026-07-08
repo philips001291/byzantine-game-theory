@@ -2,11 +2,11 @@ runs,generals,traitors,strategy,successful_consensus,failed_consensus,success_ra
 100,6,0,split,100,0,100.0
 100,6,1,split,100,0,100.0
 100,6,2,split,100,0,100.0
-100,6,3,split,10,90,10.0
+100,6,3,split,9,91,9.0
 100,6,0,random,100,0,100.0
 100,6,1,random,100,0,100.0
 100,6,2,random,100,0,100.0
-100,6,3,random,91,9,91.0
+100,6,3,random,83,17,83.0
 100,6,0,always_lie,100,0,100.0
 100,6,1,always_lie,100,0,100.0
 100,6,2,always_lie,100,0,100.0
@@ -14,4 +14,4 @@ runs,generals,traitors,strategy,successful_consensus,failed_consensus,success_ra
 100,6,0,coordinated,100,0,100.0
 100,6,1,coordinated,100,0,100.0
 100,6,2,coordinated,100,0,100.0
-100,6,3,coordinated,55,45,55.00000000000001
+100,6,3,coordinated,48,52,48.0
